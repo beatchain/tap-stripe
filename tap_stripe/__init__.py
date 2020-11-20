@@ -460,6 +460,7 @@ def sync_stream(stream_name):
                 rec = reduce_foreign_keys(rec, stream_name)
                 stream_obj_created = rec[replication_key]
                 rec['updated'] = stream_obj_created
+                rec['account_id'] = Context.config.get('account_id')
 
                 # sync stream if object is greater than or equal to the bookmark
                 if stream_obj_created >= stream_bookmark:
@@ -628,6 +629,7 @@ def sync_sub_stream(sub_stream_name, parent_obj, updates=False):
                                         metadata.to_map(
                                             Context.get_catalog_entry(sub_stream_name)['metadata']
                                         ))
+            rec['account_id'] = Context.config.get('account_id')
             # NB: Older structures (such as invoice_line_items) may not have had their ID present.
             #     Skip these if they don't match the structure we expect.
             if "id" in rec:
@@ -743,6 +745,7 @@ def sync_event_updates(stream_name):
                 rec = unwrap_data_objects(rec)
                 rec = reduce_foreign_keys(rec, stream_name)
                 rec["updated"] = events_obj.created
+                rec['account_id'] = Context.config.get('account_id')
                 rec = transformer.transform(
                     rec,
                     Context.get_catalog_entry(stream_name)['schema'],
