@@ -5,6 +5,12 @@
     "string"
   ],
   "properties": {
+    "account_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
     "nickname": {
       "type": [
         "null",

@@ -1,5 +1,11 @@
 {
   "properties": {
+    "account_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
     "metadata": {
       "type": [
         "null",

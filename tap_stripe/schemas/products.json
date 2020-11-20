@@ -4,6 +4,12 @@
     "object"
   ],
   "properties": {
+    "account_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
         "id": {
       "type": [
         "null",
